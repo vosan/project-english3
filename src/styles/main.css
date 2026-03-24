@@ -3,3 +3,9 @@
   Ensures consistent visual appearance across different components and pages.
 */
 
+@import "base.css";
+@import "variables.css";
+@import "layout.css";
+
+/* Components */
+@import "../components/footer/footer.css";
