@@ -1,0 +1,21 @@
+/* This is the main css file. */
+
+@import "variables.css";
+
+/* Components */
+/* noinspection CssUnknownTarget */
+@import "about.css";
+/* noinspection CssUnknownTarget */
+@import "application.css";
+/* noinspection CssUnknownTarget */
+@import "footer.css";
+/* noinspection CssUnknownTarget */
+@import "header.css";
+/* noinspection CssUnknownTarget */
+@import "hero.css";
+/* noinspection CssUnknownTarget */
+@import "lessons.css";
+/* noinspection CssUnknownTarget */
+@import "reviews.css";
+/* noinspection CssUnknownTarget */
+@import "teachers.css";
