@@ -1,0 +1,38 @@
+name: Cleanup PR Preview Folder
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  cleanup-pr-preview:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Delete PR preview folder
+        run: |
+          PR_NUM=${{ github.event.pull_request.number }}
+          PREVIEW_DIR="./dist/pr-$PR_NUM"
+          if [ -d "$PREVIEW_DIR" ]; then
+            rm -rf "$PREVIEW_DIR"
+            echo "Deleted $PREVIEW_DIR"
+          else
+            echo "Folder $PREVIEW_DIR does not exist, skipping."
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Remove preview folder for merged PR #${{ github.event.pull_request.number }}" || echo "No changes to commit"
+          git push origin HEAD

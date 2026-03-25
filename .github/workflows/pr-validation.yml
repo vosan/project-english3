@@ -1,17 +1,17 @@
-name: PR Validation
+name: PR Validation + Preview Deployment
 
 on:
   pull_request:
     branches: ["main"]
 
 permissions:
-  contents: read          # still needed
-  pages: write            # for deploy-pages
-  id-token: write         # for OIDC
-  pull-requests: write    # needed to comment on PRs
+  contents: read
+  pages: write
+  id-token: write
+  pull-requests: write
 
 jobs:
-  validate:
+  validate-and-preview:
     runs-on: ubuntu-latest
 
     steps:
@@ -40,6 +40,20 @@ jobs:
       - name: Build site with Gulp
         run: npx gulp build
 
+      - name: Copy build to PR folder
+        run: |
+          PR_NUM=${{ github.event.pull_request.number }}
+          mkdir -p ./dist/pr-$PR_NUM
+          cp -r ./dist/* ./dist/pr-$PR_NUM/
+
+      - name: Cleanup old PR previews
+        run: |
+          cd dist
+          folders_to_delete=$(ls -1d pr-* | sort -V | head -n -10)
+          if [ ! -z "$folders_to_delete" ]; then
+            rm -rf $folders_to_delete
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -53,7 +67,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Comment PR preview URL
-        if: github.event_name == 'pull_request'
+        if: github.event.pull_request.head.repo.full_name == github.repository
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -62,5 +76,5 @@ jobs:
               issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Preview URL: ${{ steps.deployment.outputs.page_url }}`
+              body: `Preview URL: ${{ steps.deployment.outputs.page_url }}/pr-${{ github.event.pull_request.number }}/`
             })
