@@ -5,9 +5,10 @@ on:
     branches: ["main"]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: read          # still needed
+  pages: write            # for deploy-pages
+  id-token: write         # for OIDC
+  pull-requests: write    # needed to comment on PRs
 
 jobs:
   validate:
@@ -52,7 +53,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Comment PR preview URL
-        if: github.event.pull_request.head.repo.full_name == github.repository
+        if: github.event_name == 'pull_request'
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
