@@ -62,5 +62,5 @@ jobs:
               issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Preview URL: ${{ steps.deployment.outputs.page_url }}/pr-${{ github.event.pull_request.number }}/`
+              body: `Preview URL: https://${context.repo.owner}.github.io/${context.repo.repo}/pr-${{ github.event.pull_request.number }}/`
             })
