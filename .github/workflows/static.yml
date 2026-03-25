@@ -1,4 +1,4 @@
-name: Preview Deployment
+name: Production Sync
 
 on:
   push:

@@ -1,8 +1,13 @@
-name: Prod Deployment
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: ["gh-pages"]
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Production Sync", "PR Validation + Preview Deployment", "Preview Cleanup"]
+    types:
+      - completed
 
 permissions:
   contents: read
