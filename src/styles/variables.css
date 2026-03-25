@@ -62,4 +62,10 @@
   --button-height-large: 60px;
   --button-height-medium: 52px;
   --input-height: 56px;
+
+  /* 5. Breakpoints & Layout */
+  --breakpoint-mobile-min: 320px;
+  --breakpoint-mobile-adaptive: 375px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1280px;
 }
