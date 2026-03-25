@@ -1,4 +1,4 @@
-const { src, dest, watch, series, parallel } = require("gulp");
+const { src, dest, parallel } = require("gulp");
 const fileInclude = require("gulp-file-include");
 const rename = require("gulp-rename");
 
@@ -31,17 +31,8 @@ function images() {
   return src("src/images/**/*").pipe(dest("./dist/images"));
 }
 
-// Watch task
-function watchFiles() {
-  watch("src/**/*.html", html);
-  watch(["src/styles/**/*.css", "src/components/**/*.css"], styles);
-  watch("src/js/**/*.js", scripts);
-  watch("src/images/**/*", images);
-}
-
 exports.html = html;
 exports.styles = styles;
 exports.scripts = scripts;
 exports.images = images;
-exports.watch = watchFiles;
-exports.default = series(parallel(html, styles, scripts, images), watchFiles);
+exports.default = parallel(html, styles, scripts, images);
