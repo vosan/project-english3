@@ -1,23 +1,15 @@
-name: PR Validation + Preview Deployment
+name: PR Verification
 
 on:
   pull_request:
     branches: ["main"]
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
-  pull-requests: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  validate-and-preview:
+  prettier:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -41,26 +33,27 @@ jobs:
       - name: Check format
         run: npm run check-format
 
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Cache NPM
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Build site with Gulp
         run: npx gulp build
-
-      - name: Deploy PR to gh-pages branch
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: dist
-          target-folder: pr-${{ github.event.pull_request.number }}
-          clean: false
-
-      - name: Comment PR preview URL
-        if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.payload.pull_request.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Preview URL: https://${context.repo.owner}.github.io/${context.repo.repo}/pr-${{ github.event.pull_request.number }}/`
-            })
