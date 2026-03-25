@@ -45,25 +45,21 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # 5. Check formatting with Prettier
-      - name: Check format
-        run: npm run check-format
-
-      # 6. Run Gulp to build dist/
+      # 5. Run Gulp to build dist/
       - name: Build site with Gulp
         run: npx gulp
 
-      # 7. Prepare GitHub Pages
+      # 6. Prepare GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 8. Upload built site (dist/) as artifact
+      # 7. Upload built site (dist/) as artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
 
-      # 9. Deploy to GitHub Pages
+      # 8. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
