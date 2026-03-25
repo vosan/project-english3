@@ -2,3 +2,64 @@
   Defines global variables for the website, including colors, fonts, and spacing.
   Ensures consistent visual appearance across different components and pages.
 */
+
+:root {
+  /* 1. Colors */
+  /* Brand Colors */
+  --color-black: #121417;
+  --color-green: #4dc274;
+  --color-green-active: #38ae5f;
+  --color-light-green: #d4fde1;
+  --color-gray: #f3f5f6;
+  --color-white: #ffffff;
+
+  /* Gradients */
+  --gradient-green: linear-gradient(84.6deg, #4dc274 2.25%, #bee8cc 131.25%);
+
+  /* Border Colors */
+  --color-border-light: rgba(18, 20, 23, 0.1);
+  --color-border-white-alpha: rgba(255, 255, 255, 0.4);
+  --color-debug-purple: #9747ff; /* Used for dashed boxes in UI Kit */
+
+  /* 2. Typography */
+  /* Font Family */
+  --font-family-main: "Manrope", sans-serif;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Font Sizes */
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 20px;
+
+  /* Line Heights */
+  --line-height-xs: 18px;
+  --line-height-sm: 24px;
+  --line-height-md: 28px;
+  --line-height-lg: 27px;
+
+  /* 3. Layout & Spacing */
+  /* Border Radius */
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 500px; /* For avatars/circles */
+
+  /* Spacing / Gaps */
+  --gap-xs: 4px;
+  --gap-sm: 6px;
+  --gap-md: 12px;
+  --gap-lg: 20px;
+
+  /* Container / Reference Dimensions */
+  --ui-kit-width: 1280px;
+
+  /* 4. Component-Specific Constants */
+  --button-height-large: 60px;
+  --button-height-medium: 52px;
+  --input-height: 56px;
+}

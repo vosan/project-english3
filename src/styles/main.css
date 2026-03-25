@@ -1,11 +1,11 @@
-/*
-  Defines global styles for the website, including typography, colors, and spacing.
-  Ensures consistent visual appearance across different components and pages.
-*/
-
-@import "base.css";
 @import "variables.css";
-@import "layout.css";
 
 /* Components */
+@import "../components/about/about.css";
+@import "../components/application/application.css";
 @import "../components/footer/footer.css";
+@import "../components/header/header.css";
+@import "../components/hero/hero.css";
+@import "../components/lessons/lessons.css";
+@import "../components/reviews/reviews.css";
+@import "../components/teachers/teachers.css";
