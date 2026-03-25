@@ -30,3 +30,30 @@ jobs:
 
       - name: Check format
         run: npm run check-format
+
+      - name: Build site with Gulp
+        run: npx gulp build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy PR preview
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Comment PR preview URL
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: ${{ github.event.pull_request.number }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Preview URL: ${{ steps.deployment.outputs.page_url }}`
+            })
