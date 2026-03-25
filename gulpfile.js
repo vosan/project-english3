@@ -44,4 +44,5 @@ exports.styles = styles;
 exports.scripts = scripts;
 exports.images = images;
 exports.watch = series(parallel(html, styles, scripts, images), watchFiles);
-exports.default = parallel(html, styles, scripts, images);
+exports.build = parallel(html, styles, scripts, images);
+exports.default = exports.build;
