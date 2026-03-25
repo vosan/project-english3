@@ -43,16 +43,16 @@ jobs:
       - name: Copy build to PR folder
         run: |
           PR_NUM=${{ github.event.pull_request.number }}
+          # Create a temporary directory outside of dist
+          mkdir ./build_tmp
+          # Move everything from dist to the temp folder
+          mv ./dist/* ./build_tmp/
+          # Recreate the specific PR subdirectory inside dist
           mkdir -p ./dist/pr-$PR_NUM
-          cp -r ./dist/* ./dist/pr-$PR_NUM/
-
-      - name: Cleanup old PR previews
-        run: |
-          cd dist
-          folders_to_delete=$(ls -1d pr-* | sort -V | head -n -10)
-          if [ ! -z "$folders_to_delete" ]; then
-            rm -rf $folders_to_delete
-          fi
+          # Move the content back into the PR-specific folder
+          mv ./build_tmp/* ./dist/pr-$PR_NUM/
+          # Clean up
+          rm -rf ./build_tmp
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
