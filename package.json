@@ -13,7 +13,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "npx gulp watch",
-    "format": "prettier --write '**/*.{html,css,js}'"
+    "format": "prettier --write '**/*.{html,css,js}'",
+    "check-format": "prettier --check '**/*.{html,css,js}'"
   },
   "repository": {
     "type": "git",
