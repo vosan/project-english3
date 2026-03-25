@@ -33,7 +33,7 @@ jobs:
       - name: Check format
         run: npm run check-format
 
-  verify:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
