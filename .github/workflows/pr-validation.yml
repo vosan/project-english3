@@ -1,4 +1,4 @@
-name: PR Validation + Preview Deployment
+name: PR Verification
 
 on:
   pull_request:
@@ -6,14 +6,10 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-  pull-requests: write
 
 jobs:
-  validate-and-preview:
+  prettier:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -37,44 +33,27 @@ jobs:
       - name: Check format
         run: npm run check-format
 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Cache NPM
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Build site with Gulp
         run: npx gulp build
-
-      - name: Copy build to PR folder
-        run: |
-          PR_NUM=${{ github.event.pull_request.number }}
-          # Create a temporary directory outside of dist
-          mkdir ./build_tmp
-          # Move everything from dist to the temp folder
-          mv ./dist/* ./build_tmp/
-          # Recreate the specific PR subdirectory inside dist
-          mkdir -p ./dist/pr-$PR_NUM
-          # Move the content back into the PR-specific folder
-          mv ./build_tmp/* ./dist/pr-$PR_NUM/
-          # Clean up
-          rm -rf ./build_tmp
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-      - name: Deploy PR preview
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-      - name: Comment PR preview URL
-        if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.payload.pull_request.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Preview URL: ${{ steps.deployment.outputs.page_url }}/pr-${{ github.event.pull_request.number }}/`
-            })

@@ -1,12 +1,12 @@
-name: Build and Deploy to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["main"]        # triggers on push to main
-  workflow_dispatch:          # allows manual run from Actions tab
+    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -15,24 +15,20 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # 3. Cache node_modules
       - name: Cache NPM
         uses: actions/cache@v3
         with:
@@ -41,25 +37,26 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      # 4. Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # 5. Run Gulp to build dist/
       - name: Build site with Gulp
         run: npx gulp
 
-      # 6. Prepare GitHub Pages
+      - name: Deploy to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 7. Upload built site (dist/) as artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
 
-      # 8. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
