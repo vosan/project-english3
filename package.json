@@ -12,6 +12,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "gulp": "npx gulp",
     "format": "prettier --write '**/*.{html,css,js}'"
   },
   "repository": {
