@@ -10,7 +10,7 @@ function html() {
         prefix: "@@",
         basepath: "@file",
       }),
-    )
+)
     .pipe(dest("./dist")); // output final HTML
 }
 
