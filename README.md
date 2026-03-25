@@ -50,4 +50,4 @@ To maintain code quality and consistency:
    ```bash
    npm run format
    ```
-2. **Commit changes**: Although, `gulp` is incorporated into our CI flow to automatically generate `dist/` and deploy from it, it is still a good safety precaution to verify that your changes are reflected correctly in the `dist/` folder before commiting.
+2. **Commit changes**: Although, `gulp` is incorporated into our CI workflow to automatically generate `dist/` and deploy from it, it is still a good safety precaution to verify that your changes are reflected correctly in the `dist/` folder before commiting.
