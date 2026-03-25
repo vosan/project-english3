@@ -2,15 +2,11 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["gh-pages"]
+    branches: ["main"]
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Production Sync", "PR Validation + Preview Deployment", "Preview Cleanup"]
-    types:
-      - completed
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -19,16 +15,39 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout gh-pages
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          ref: gh-pages
+          node-version: '18'
+
+      - name: Cache NPM
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site with Gulp
+        run: npx gulp
+
+      - name: Deploy to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -36,7 +55,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
