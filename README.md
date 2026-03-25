@@ -46,7 +46,7 @@ compile assets into the `dist` folder.
 To maintain code quality and consistency:
 
 1. **Format your code**: Before committing any changes, you must run the following command to format HTML, CSS, and JS
-   files:
+   files, otherwise the CI verifications will fail and you won't be able to merge your PR:
    ```bash
    npm run format
    ```
