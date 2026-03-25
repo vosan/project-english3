@@ -1,4 +1,4 @@
-name: Build and Deploy to GitHub Pages
+name: Preview Deployment
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:          # allows manual run from Actions tab
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -15,10 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build-and-sync:
     runs-on: ubuntu-latest
 
     steps:
@@ -49,17 +46,11 @@ jobs:
       - name: Build site with Gulp
         run: npx gulp
 
-      # 6. Prepare GitHub Pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      # 7. Upload built site (dist/) as artifact
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      # 6. Deploy to gh-pages branch
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: './dist'
-
-      # 8. Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          branch: gh-pages
+          folder: dist
+          clean-exclude: |
+            pr-*

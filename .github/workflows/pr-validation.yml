@@ -5,10 +5,14 @@ on:
     branches: ["main"]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
   pull-requests: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   validate-and-preview:
@@ -40,31 +44,13 @@ jobs:
       - name: Build site with Gulp
         run: npx gulp build
 
-      - name: Copy build to PR folder
-        run: |
-          PR_NUM=${{ github.event.pull_request.number }}
-          # Create a temporary directory outside of dist
-          mkdir ./build_tmp
-          # Move everything from dist to the temp folder
-          mv ./dist/* ./build_tmp/
-          # Recreate the specific PR subdirectory inside dist
-          mkdir -p ./dist/pr-$PR_NUM
-          # Move the content back into the PR-specific folder
-          mv ./build_tmp/* ./dist/pr-$PR_NUM/
-          # Clean up
-          rm -rf ./build_tmp
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy PR to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: ./dist
-
-      - name: Deploy PR preview
-        id: deployment
-        uses: actions/deploy-pages@v4
+          branch: gh-pages
+          folder: dist
+          target-folder: pr-${{ github.event.pull_request.number }}
+          clean: false
 
       - name: Comment PR preview URL
         if: github.event.pull_request.head.repo.full_name == github.repository
