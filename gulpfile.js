@@ -23,14 +23,12 @@ function styles() {
 
 // Scripts task
 function scripts() {
-  return src("src/js/**/*.js")
-    .pipe(dest("./dist/js"));
+  return src("src/js/**/*.js").pipe(dest("./dist/js"));
 }
 
 // Images task
 function images() {
-  return src("src/images/**/*")
-    .pipe(dest("./dist/images"));
+  return src("src/images/**/*").pipe(dest("./dist/images"));
 }
 
 // Watch task
