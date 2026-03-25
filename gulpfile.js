@@ -10,13 +10,13 @@ function html() {
         prefix: "@@",
         basepath: "@file",
       }),
-)
+    )
     .pipe(dest("./dist")); // output final HTML
 }
 
 // Styles task
 function styles() {
-  return src(["src/styles/**/*.css", "src/components/**/*.css"])
+  return src(["src/css/**/*.css", "src/components/**/*.css"])
     .pipe(rename({ dirname: "" }))
     .pipe(dest("./dist/css"));
 }
@@ -34,7 +34,7 @@ function images() {
 // Watch task
 function watchFiles() {
   watch("src/**/*.html", html);
-  watch(["src/styles/**/*.css", "src/components/**/*.css"], styles);
+  watch(["src/css/**/*.css", "src/components/**/*.css"], styles);
   watch("src/js/**/*.js", scripts);
   watch("src/images/**/*", images);
 }
