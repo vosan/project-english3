@@ -1,0 +1,183 @@
+/* #region Reset */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+address {
+    font-style: normal;
+}
+
+button {
+    font-family: inherit;
+    color: currentColor;
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* #endregion */
+
+/* :root {
+    --black: #121417;
+    --green: #4dc274;
+    --light-green: #d4fde1;
+    --dark-green: #38ae5f;
+    --gray: #f3f5f6;
+    --white: #fff;
+    --font-family: "Manrope", sans-serif;
+} */
+
+
+.lessons-section-wrapper{
+    font-family: var(--font-family-main);
+    width: 1024px;
+    margin:150px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.lessons-title-info{
+    width:832px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:0 auto 64px;
+}
+
+.section-title{
+    text-align: center;
+    margin: 0;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: var(--color-black);
+}
+
+.section-description{
+    margin: 0;
+    margin-top:16px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 167%;
+    text-align: center;
+    color: rgba(18, 20, 23, 0.5);
+}
+
+.lessons-container {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.lesson-card{
+    display:flex;
+    flex-direction: column;
+    border: 1px solid var(--color-green);
+    border-radius: 30px;
+    width: 320px;
+    min-height: 404px;;
+    align-items: center;
+    padding: 32px 0;
+    gap: 16px;
+    background: var(--color-white);
+}
+
+.lesson-card:nth-child(2) {
+    border: none;
+    background: var(--color-green);
+    color: var(--color-white);
+}
+
+.lesson-title{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: var(--color-black);
+}
+.lesson-card:nth-child(2) .lesson-title{
+    color: inherit;
+}
+
+.lesson-price{
+    font-family: var(--font-family-main);
+    font-weight: 700;
+        font-size: 32px;
+        line-height: 138%;
+        letter-spacing: -0.02em;
+        text-align: center;
+        color: var(--color-black);
+}
+
+.lesson-card:nth-child(2) .lesson-price {
+    color: inherit;
+}
+
+.lesson-description{
+    margin:0;
+    margin-inline: 33px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    color: rgba(18, 20, 23, 0.5);
+}
+
+.lesson-card:nth-child(2) .lesson-description {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.lesson-card-btn{
+    border: 1px solid var(--color-border-white-alpha);
+    border-radius: 12px;
+    padding: 15px 38px;
+    width: 256px;
+    height: 60px;
+    background-color: var(--color-green);
+    margin-top: auto;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 156%;
+    color: var(--color-white);
+    transition: 300ms ease-in;
+    transition-property: color, background-color;
+}
+
+.lesson-card-btn:hover,
+.lesson-card-btn:active{
+background-color: var(--color-green-active);
+}
+
+.lesson-card:nth-child(2) .lesson-card-btn:hover,
+.lesson-card:nth-child(2) .lesson-card-btn:active {
+    background-color: var(--color-white);
+    color: var(--color-green);
+}
