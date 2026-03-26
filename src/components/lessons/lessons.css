@@ -116,7 +116,7 @@ img {
   background: var(--color-white);
 }
 
-.lesson-card:nth-child(2) {
+.lesson-card--highlighted {
   border: none;
   background: var(--color-green);
   color: var(--color-white);
@@ -131,7 +131,7 @@ img {
   color: var(--color-black);
 }
 
-.lesson-card:nth-child(2) .lesson-title {
+.lesson-card--highlighted .lesson-title {
   color: inherit;
 }
 
@@ -146,7 +146,7 @@ img {
   margin-top: 16px;
 }
 
-.lesson-card:nth-child(2) .lesson-price {
+.lesson-card--highlighted .lesson-price {
   color: inherit;
 }
 
@@ -161,7 +161,7 @@ img {
   margin-top: 40px;
 }
 
-.lesson-card:nth-child(2) .lesson-description {
+.lesson-card--highlighted .lesson-description {
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -187,8 +187,8 @@ img {
   background-color: var(--color-green-active);
 }
 
-.lesson-card:nth-child(2) .lesson-card-btn:hover,
-.lesson-card:nth-child(2) .lesson-card-btn:focus {
+.lesson-card--highlighted .lesson-card-btn:hover,
+.lesson-card--highlighted .lesson-card-btn:focus {
   background-color: var(--color-white);
   color: var(--color-green);
 }
@@ -278,7 +278,7 @@ img {
     background: var(--color-white);
   }
 
-  .lesson-card:nth-child(2) {
+  .lesson-card--highlighted {
     border: none;
     background: var(--color-green);
     color: var(--color-white);
@@ -293,7 +293,7 @@ img {
     color: var(--color-black);
   }
 
-  .lesson-card:nth-child(2) .lesson-title {
+  .lesson-card--highlighted .lesson-title {
     color: inherit;
   }
 
@@ -308,7 +308,7 @@ img {
     margin-top: 16px;
   }
 
-  .lesson-card:nth-child(2) .lesson-price {
+  .lesson-card--highlighted .lesson-price {
     color: inherit;
   }
 
@@ -324,7 +324,7 @@ img {
     margin-top: 32px;
   }
 
-  .lesson-card:nth-child(2) .lesson-description {
+  .lesson-card--highlighted .lesson-description {
     color: rgba(255, 255, 255, 0.7);
   }
 
@@ -350,8 +350,8 @@ img {
     background-color: var(--color-green-active);
   }
 
-  .lesson-card:nth-child(2) .lesson-card-btn:hover,
-  .lesson-card:nth-child(2) .lesson-card-btn:focus {
+  .lesson-card--highlighted .lesson-card-btn:hover,
+  .lesson-card--highlighted .lesson-card-btn:focus {
     background-color: var(--color-white);
     color: var(--color-green);
   }
@@ -441,7 +441,7 @@ img {
     background: var(--color-white);
   }
 
-  .lesson-card:nth-child(2) {
+  .lesson-card--highlighted {
     border: none;
     background: var(--color-green);
     color: var(--color-white);
@@ -456,7 +456,7 @@ img {
     color: var(--color-black);
   }
 
-  .lesson-card:nth-child(2) .lesson-title {
+  .lesson-card--highlighted .lesson-title {
     color: inherit;
   }
 
@@ -471,7 +471,7 @@ img {
     margin-top: 16px;
   }
 
-  .lesson-card:nth-child(2) .lesson-price {
+  .lesson-card--highlighted .lesson-price {
     color: inherit;
   }
 
@@ -487,7 +487,7 @@ img {
     margin-top: 16px;
   }
 
-  .lesson-card:nth-child(2) .lesson-description {
+  .lesson-card--highlighted .lesson-description {
     color: rgba(255, 255, 255, 0.7);
   }
 
@@ -513,8 +513,8 @@ img {
     background-color: var(--color-green-active);
   }
 
-  .lesson-card:nth-child(2) .lesson-card-btn:hover,
-  .lesson-card:nth-child(2) .lesson-card-btn:focus {
+  .lesson-card--highlighted .lesson-card-btn:hover,
+  .lesson-card--highlighted .lesson-card-btn:focus {
     background-color: var(--color-white);
     color: var(--color-green);
   }
