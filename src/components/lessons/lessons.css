@@ -39,6 +39,7 @@ img {
 
 /* #endregion */
 
+/* #region Mobile view */
 .lessons-section {
     font-family: var(--font-family-main);
     width: 335px;
@@ -189,12 +190,163 @@ img {
     background-color: var(--color-white);
     color: var(--color-green);
 }
-
-
-
+/* #endregion */
 
 /* #region Tablet view */
+@media only screen and (min-width: 768px) {
+    .lessons-section {
+        font-family: var(--font-family-main);
+        width: 704px;
+        margin: 100px auto;
+        display: flex;
+        flex-direction: column;
+    }
 
+    .lessons-title-info {
+        width: 704px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto 64px;
+    }
+
+    .section-title {
+        text-align: center;
+        margin: 0;
+        font-weight: var(--font-weight-bold);
+        font-size: 40px;
+        line-height: 120%;
+        letter-spacing: -0.02em;
+        text-align: center;
+        color: var(--color-black);
+    }
+
+    .section-title-marker {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+    }
+    
+    .section-title-marker::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 100%;
+        height: 20px;
+        z-index: -1;
+        background: #bee8cc;
+        border-radius: 8px;
+    }
+
+    .section-description {
+        margin: 0;
+        margin-top: 16px;
+        text-align: center;
+        font-weight: var(--font-weight-regular);
+        font-size: 18px;
+        line-height: 167%;
+        text-align: center;
+        color: rgba(18, 20, 23, 0.5);
+    }
+
+    .lessons-container {
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+        gap: 32px;
+    }
+
+    .lesson-card {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--color-green);
+        border-radius: 30px;
+        width: 336px;
+        min-height: 404px;
+        align-items: center;
+        padding: 32px 0;
+        gap: 16px;
+        background: var(--color-white);
+    }
+
+    .lesson-card:nth-child(2) {
+        border: none;
+        background: var(--color-green);
+        color: var(--color-white);
+    }
+
+    .lesson-title {
+        font-weight: var(--font-weight-bold);
+        font-size: 20px;
+        line-height: 120%;
+        letter-spacing: -0.02em;
+        text-align: center;
+        color: var(--color-black);
+    }
+
+    .lesson-card:nth-child(2) .lesson-title {
+        color: inherit;
+    }
+
+    .lesson-price {
+        font-family: var(--font-family-main);
+        font-weight: var(--font-weight-bold);
+        font-size: 32px;
+        line-height: 138%;
+        letter-spacing: -0.02em;
+        text-align: center;
+        color: var(--color-black);
+    }
+
+    .lesson-card:nth-child(2) .lesson-price {
+            color: inherit;
+    }
+
+    .lesson-description {
+        margin: 0;
+        margin-inline: 16px;
+        font-weight: var(--font-weight-regular);
+        font-size: 16px;
+        line-height: 150%;
+        text-align: center;
+        color: rgba(18, 20, 23, 0.5);
+    }
+
+    .lesson-card:nth-child(2) .lesson-description {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .lesson-card-btn {
+        border: 1px solid var(--color-border-white-alpha);
+        border-radius: 12px;
+        padding: 15px 62px;
+        width: 304px;
+        height: 60px;
+        background-color: var(--color-green);
+        margin-top: auto;
+        font-weight: var(--font-weight-bold);
+        font-size: 18px;
+        line-height: 156%;
+        color: var(--color-white);
+        transition: 300ms ease-in;
+        transition-property: color, background-color;
+    }
+
+    .lesson-card-btn:hover,
+    .lesson-card-btn:active {
+        background-color: var(--color-green-active);
+    }
+
+    .lesson-card:nth-child(2) .lesson-card-btn:hover,
+    .lesson-card:nth-child(2) .lesson-card-btn:active {
+        background-color: var(--color-white);
+        color: var(--color-green);
+    }
+
+}
 /* #endregion */
 
 /* #region Desktop view */
@@ -247,6 +399,7 @@ img {
 .section-description{
     margin: 0;
     margin-top:16px;
+    width:665px;
     text-align: center;
     font-weight: var(--font-weight-regular);
     font-size: 18px;
