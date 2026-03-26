@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/vosan/project-english3/issues"
   },
-  "homepage": "https://github.com/vosan/project-english3#readme"
+  "homepage": "https://github.com/vosan/project-english3#readme",
+  "dependencies": {
+    "modern-normalize": "^3.0.1"
+  }
 }
