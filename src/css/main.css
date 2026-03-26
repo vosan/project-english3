@@ -1,6 +1,7 @@
 /* This is the main css file. */
 
 @import "variables.css";
+@import "base.css";
 
 /* Components */
 /* noinspection CssUnknownTarget */
