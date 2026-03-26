@@ -113,7 +113,6 @@ img {
     min-height: 400px;
     align-items: center;
     padding: 40px 0;
-    gap: 16px;
     background: var(--color-white);
 }
 
@@ -144,6 +143,7 @@ img {
     letter-spacing: -0.02em;
     text-align: center;
     color: var(--color-black);
+    margin-top:16px;
 }
 
 .lesson-card:nth-child(2) .lesson-price {
@@ -158,6 +158,7 @@ img {
     line-height: 171%;
     text-align: center;
     color: rgba(18, 20, 23, 0.5);
+    margin-top: 40px;
 }
 
 .lesson-card:nth-child(2) .lesson-description {
@@ -268,7 +269,6 @@ img {
         min-height: 404px;
         align-items: center;
         padding: 32px 0;
-        gap: 16px;
         background: var(--color-white);
     }
 
@@ -299,6 +299,7 @@ img {
         letter-spacing: -0.02em;
         text-align: center;
         color: var(--color-black);
+        margin-top: 16px;
     }
 
     .lesson-card:nth-child(2) .lesson-price {
@@ -306,6 +307,7 @@ img {
     }
 
     .lesson-description {
+        width: 304px;
         margin: 0;
         margin-inline: 16px;
         font-weight: var(--font-weight-regular);
@@ -313,6 +315,7 @@ img {
         line-height: 150%;
         text-align: center;
         color: rgba(18, 20, 23, 0.5);
+        margin-top: 32px;
     }
 
     .lesson-card:nth-child(2) .lesson-description {
@@ -425,7 +428,6 @@ img {
     min-height: 404px;
     align-items: center;
     padding: 32px 0;
-    gap: 16px;
     background: var(--color-white);
 }
 
@@ -456,6 +458,7 @@ img {
     letter-spacing: -0.02em;
     text-align: center;
     color: var(--color-black);
+    margin-top: 16px;
 }
 
 .lesson-card:nth-child(2) .lesson-price {
@@ -463,6 +466,7 @@ img {
 }
 
 .lesson-description{
+    width:255px;
     margin:0;
     margin-inline: 33px;
     font-weight: var(--font-weight-regular);
@@ -470,6 +474,7 @@ img {
     line-height: 150%;
     text-align: center;
     color: rgba(18, 20, 23, 0.5);
+    margin-top: 16px;
 }
 
 .lesson-card:nth-child(2) .lesson-description {
