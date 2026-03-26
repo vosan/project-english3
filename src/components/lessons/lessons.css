@@ -69,7 +69,7 @@ img {
 .section-title{
     text-align: center;
     margin: 0;
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     font-size: 40px;
     line-height: 120%;
     letter-spacing: -0.02em;
@@ -99,7 +99,7 @@ img {
     margin: 0;
     margin-top:16px;
     text-align: center;
-    font-weight: 400;
+    font-weight: var(--font-weight-regular);
     font-size: 18px;
     line-height: 167%;
     text-align: center;
@@ -134,7 +134,7 @@ img {
 }
 
 .lesson-title{
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     font-size: 20px;
     line-height: 120%;
     letter-spacing: -0.02em;
@@ -147,12 +147,12 @@ img {
 
 .lesson-price{
     font-family: var(--font-family-main);
-    font-weight: 700;
-        font-size: 32px;
-        line-height: 138%;
-        letter-spacing: -0.02em;
-        text-align: center;
-        color: var(--color-black);
+    font-weight: var(--font-weight-bold);
+    font-size: 32px;
+    line-height: 138%;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: var(--color-black);
 }
 
 .lesson-card:nth-child(2) .lesson-price {
@@ -162,7 +162,7 @@ img {
 .lesson-description{
     margin:0;
     margin-inline: 33px;
-    font-weight: 400;
+    font-weight: var(--font-weight-regular);
     font-size: 16px;
     line-height: 150%;
     text-align: center;
@@ -181,7 +181,7 @@ img {
     height: 60px;
     background-color: var(--color-green);
     margin-top: auto;
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     font-size: 18px;
     line-height: 156%;
     color: var(--color-white);
