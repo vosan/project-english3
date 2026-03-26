@@ -167,7 +167,7 @@
 /* Mobile Adaptive (375px+) */
 @media screen and (min-width: 375px) {
   .footer__container {
-    width: 375px;
+    max-width: 375px;
     margin: 0 auto;
   }
 }
@@ -180,7 +180,7 @@
   }
 
   .footer__container {
-    width: 768px;
+    max-width: 768px;
     padding: 0 32px;
   }
 
@@ -205,7 +205,7 @@
   }
 
   .footer__container {
-    width: 1280px;
+    max-width: 1280px;
     padding: 0 128px;
   }
 
@@ -261,17 +261,17 @@
 
 .footer__legal {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: flex-start;
   padding: 0;
   margin: 0;
-  gap: 14px;
+  gap: 18px;
   list-style: none;
 }
 
 @media screen and (min-width: 768px) {
   .footer__legal {
-    flex-direction: row;
     gap: 18px;
   }
 }
