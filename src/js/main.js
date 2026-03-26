@@ -1,8 +1,8 @@
-const allButtons = document.querySelectorAll('.lesson-card-btn');
+const lessonsButtons = document.querySelectorAll('.lesson-card-btn');
 const applicationSection = document.getElementById('application');
 
 if (applicationSection) {
-  allButtons.forEach(button => {
+    lessonsButtons.forEach(button => {
     button.addEventListener('click', () => {
       applicationSection.scrollIntoView({ behavior: 'smooth' });
     });
