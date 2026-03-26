@@ -177,20 +177,26 @@ img {
     font-size: 14px;
     line-height: 171%;
     color: var(--color-white);
-    transition: 300ms ease-in;
-    transition-property: color, background-color;
+    transition-property: color, background-color, transform;
+    transition-duration: 300ms, 300ms, 0.1s;
+    transition-timing-function: ease-in, ease-in, ease;
 }
 
 .lesson-card-btn:hover,
-.lesson-card-btn:active {
+.lesson-card-btn:focus {
     background-color: var(--color-green-active);
 }
 
 .lesson-card:nth-child(2) .lesson-card-btn:hover,
-.lesson-card:nth-child(2) .lesson-card-btn:active {
+.lesson-card:nth-child(2) .lesson-card-btn:focus {
     background-color: var(--color-white);
     color: var(--color-green);
 }
+
+.lesson-card-btn:active {
+    transform: scale(0.9);
+}
+
 /* #endregion */
 
 /* #region Tablet view */
@@ -334,19 +340,24 @@ img {
         font-size: 18px;
         line-height: 156%;
         color: var(--color-white);
-        transition: 300ms ease-in;
-        transition-property: color, background-color;
+        transition-property: color, background-color, transform;
+        transition-duration: 300ms, 300ms, 0.1s;
+        transition-timing-function: ease-in, ease-in, ease;
     }
 
     .lesson-card-btn:hover,
-    .lesson-card-btn:active {
+    .lesson-card-btn:focus {
         background-color: var(--color-green-active);
     }
 
     .lesson-card:nth-child(2) .lesson-card-btn:hover,
-    .lesson-card:nth-child(2) .lesson-card-btn:active {
+    .lesson-card:nth-child(2) .lesson-card-btn:focus {
         background-color: var(--color-white);
         color: var(--color-green);
+    }
+
+    .lesson-card-btn:active {
+        transform: scale(0.9);
     }
 
 }
@@ -493,19 +504,24 @@ img {
     font-size: 18px;
     line-height: 156%;
     color: var(--color-white);
-    transition: 300ms ease-in;
-    transition-property: color, background-color;
+    transition-property: color, background-color, transform;
+    transition-duration: 300ms, 300ms, 0.1s;
+    transition-timing-function: ease-in, ease-in, ease;
 }
 
 .lesson-card-btn:hover,
-.lesson-card-btn:active{
+.lesson-card-btn:focus{
 background-color: var(--color-green-active);
 }
 
 .lesson-card:nth-child(2) .lesson-card-btn:hover,
-.lesson-card:nth-child(2) .lesson-card-btn:active {
+.lesson-card:nth-child(2) .lesson-card-btn:focus {
     background-color: var(--color-white);
     color: var(--color-green);
+}
+
+.lesson-card-btn:active {
+    transform: scale(0.9);
 }
 
 }
