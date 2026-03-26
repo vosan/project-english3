@@ -65,4 +65,7 @@
   --breakpoint-mobile-adaptive: 375px;
   --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1280px;
+  
+  /* 6. Transitions */
+  --transition-main: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
