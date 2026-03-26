@@ -1,0 +1,78 @@
+/* ===== Base Reset ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-main), sans-serif;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+
+/* ===== Typography ===== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-weight: var(--font-weight-regular);
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ===== Links ===== */
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+/* ===== Images ===== */
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== Forms ===== */
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  margin: 0;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ===== Utility ===== */
+
+.container {
+  width: 100%;
+  max-width: var(--breakpoint-desktop);
+  padding: 0 16px;
+  margin: 0 auto;
+}
