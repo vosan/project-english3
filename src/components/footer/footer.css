@@ -153,7 +153,9 @@
   height: 28px;
   opacity: 0.8;
   fill: var(--color-white);
-  transition: fill var(--transition-main), opacity var(--transition-main);
+  transition:
+    fill var(--transition-main),
+    opacity var(--transition-main);
 }
 
 .footer__social-link:hover .footer__social-icon,
